@@ -140,6 +140,4 @@ Year: 2025
 
 This license provides maximum freedom with author recognition.
 
-Users are free to reuse, adapt, and distribute the Weather Dashboard, provided that proper credit is given to the original 
-
-author and the Open-Meteo API terms are respected.
+Users are free to reuse, adapt, and distribute the Weather Dashboard, provided that proper credit is given to the original author and the Open-Meteo API terms are respected.
