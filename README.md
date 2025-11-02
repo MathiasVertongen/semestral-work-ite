@@ -126,3 +126,12 @@ All forecast lists have matching lengths
 Logical consistency (min ≤ max temperature)
 
 Physical plausibility (temps, wind, and precipitation within valid ranges)
+
+📜 10. Weather Dashboard License (Permissive License)
+
+License Name: Weather Dashboard License – Based on the MIT Model
+Author: Mathias Vertongen
+Project: Weather Dashboard (Open-Meteo API-based Python Application)
+Year: 2025
+This license provides maximum freedom with author recognition.
+Users are free to reuse, adapt, and distribute the Weather Dashboard, provided that proper credit is given to the original author and the Open-Meteo API terms are respected.
