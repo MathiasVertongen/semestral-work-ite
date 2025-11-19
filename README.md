@@ -114,7 +114,7 @@ Retrieves live temperature and windspeed
 Passes if differences ≤ 5 °C and ≤ 10 km/h respectively
 (Uses real API data)
 
-🌤️ 9. TestWeatherForecastConsistency (Integration Test), this test can be found in the file callex test_main_consistency
+🌤️ 9. TestWeatherForecastConsistency (Integration Test), this test can be found in the file called test_main_consistency
 
 Purpose: Check that a real 5-day forecast is consistent and realistic.
 Checks:
