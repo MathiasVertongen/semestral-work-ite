@@ -155,5 +155,20 @@ They validate both functional correctness and real-world API behavior.
 - Must comply with Open-Meteo API terms
 
 ---
+## **UMLdiagarm**
 
-<img width="865" height="872" alt="image" src="https://github.com/user-attachments/assets/64d6203f-0a26-4288-941d-585ba55f7272" />
+<img width="865" height="872" alt="image" src="https://github.com/user-attachments/assets/d3d8825a-f227-49cb-b290-c9281a8eb069" />
+
+---
+
+## 📦 Installation
+
+This project uses one external Python library: **requests**.
+
+To install all required dependencies, run the following command in your terminal:
+
+---
+```bash
+pip install -r requirements.txt
+
+
