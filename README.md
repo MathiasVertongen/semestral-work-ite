@@ -1,143 +1,159 @@
-🌦️ Weather Dashboard
+# 🌦️ Weather Dashboard  
+**Python application using the free Open-Meteo API (no key required)**
 
-A Python application that retrieves and displays current weather and forecast data for any city using the free Open-Meteo API
-.
-No API key required. The project includes a modular design, full documentation, and automated test coverage.
+A modular and fully tested Python project that retrieves current weather information and multi-day forecasts for any city in the world. Ideal as a learning project for APIs, Python modularity, CLI tools, and software testing.
 
-Features:
+---
 
-🌍 City search: enter a city interactively or via command-line (--city "Prague")
+## ✨ Features
 
-🌡️ Live data: fetch current temperature, windspeed, condition, and weather code
+- 🌍 **City Search**  
+  - Enter a city via interactive input or via command line  
+  - Example: `--city "Prague"`
 
-📅 Forecast mode: display up to 16-day forecasts
+- 🌡️ **Live Weather Data**  
+  - Temperature  
+  - Wind speed  
+  - Weather conditions + code  
 
-⚙️ Command-line options: supports --forecast, --timeout, etc.
+- 📅 **Forecast Mode**  
+  - Display forecasts up to **16 days**
 
-🧪 Automated testing: full suite of unit & integration tests for quality assurance
+- ⚙️ **Command-line Options**  
+  - Support for `--forecast`, `--timeout`, …
 
-🧰 No API key needed: powered by the Open-Meteo and Geocoding APIs
+- 🧪 **Extensive Testing**  
+  - Unit tests  
+  - Integration tests  
+  - Automatic validation of API responses
 
+- 🧰 **No API Key Needed**  
+  - Uses the Open-Meteo Forecast and Geocoding API
 
+---
 
-🧠 Program Overview
+# 🧠 Program Overview
 
 The Weather Dashboard allows users to:
 
-Enter a city name manually or via command-line.
+- Enter a city (CLI or interactive)
+- Select the desired number of forecast days (0–16)
+- Display temperature, wind, precipitation, and conditions
+- Optionally run accuracy tests using real API data
 
-Choose how many forecast days (0–16) to view.
+**Design principles:**
 
-Display temperature, windspeed, precipitation, and weather conditions.
+- Follows **PEP 8** coding conventions  
+- Modular structure with small reusable functions  
+- User-friendly CLI  
+- Clear documentation via docstrings  
+- Easy to test and extend
 
-Optionally test the accuracy of the API using automated integration tests.
+---
 
-The program’s modular design follows PEP 8 conventions, uses clear docstrings, and separates logic into small reusable methods — making it easily testable and maintainable.
+# 🧪 Test Suite Overview
 
-🧪 Test Suite Overview
+All tests are written using Python’s `unittest` framework.  
+They validate both functional correctness and real-world API behavior.
 
-The project includes a comprehensive suite of unit and integration tests to ensure both functional correctness and real-world reliability.
-All tests use Python’s built-in unittest framework.
+---
 
-🔍 1. TestDescribeCode
+## 🔍 1. TestDescribeCode
+**Purpose:** Verify correct translation of Open-Meteo weather codes  
+**Checks:**
+- Known codes → correct text  
+- Unknown codes → fallback `"Code XXX"`
 
-Purpose: Verify that weather condition codes are correctly translated into text.
-Checks:
+---
 
-Known codes → correct text (e.g., 0 → "Clear sky")
+## 🌍 2. TestGeocodeCity
+**Purpose:** Validate geocoding (city → coordinates)  
+**Checks:**
+- Parsing of latitude, longitude, and country code  
+- Invalid city raises `ValueError`  
+- Mocked API ensures stability
 
-Unknown codes → "Code XXX" fallback
+---
 
-🌍 2. TestGeocodeCity
+## 🌡️ 3. TestGetCurrentWeather
+**Purpose:** Validate retrieval of current weather data  
+**Checks:**
+- JSON includes temperature, wind, and weather code  
+- Missing fields trigger errors  
+- HTTP errors handled safely
 
-Purpose: Test that geocoding (city → coordinates) works properly.
-Checks:
+---
 
-Correct parsing of latitude, longitude, and country code
+## 📅 4. TestGetDailyForecast
+**Purpose:** Validate multi-day forecast correctness  
+**Checks:**
+- Forecast days within 1–16  
+- Matching list lengths for time, temperature, precipitation  
+- Missing `daily` key → error
 
-Invalid city raises ValueError
-(Mocked API for reliability)
+---
 
-🌡️ 3. TestGetCurrentWeather
+## 🖨️ 5. TestPrinting
+**Purpose:** Validate console output formatting  
+**Checks:**
+- `print_current()` outputs a correct formatted block  
+- `print_forecast()` outputs a clear forecast table  
+- Output captured using stdout redirection
 
-Purpose: Validate correct retrieval and structure of current weather data.
-Checks:
+---
 
-JSON structure includes temperature, windspeed, and weather code
+## ⌨️ 6. TestInteractiveHelpers
+**Purpose:** Validate user input handling  
+**Checks:**
+- Rejects invalid entries (letters, out-of-range numbers)  
+- Accepts valid inputs (0–16)
 
-Missing or malformed data triggers errors
+---
 
-HTTP errors handled safely
+## ⚙️ 7. TestArgParse
+**Purpose:** Validate command-line argument parsing  
+**Checks:**
+- `--city`  
+- `--forecast`  
+- `--timeout`
 
-📅 4. TestGetDailyForecast
+---
 
-Purpose: Validate multi-day forecast data.
-Checks:
+## 🌦️ 8. TestWeatherSimilarity *(Integration Test)*  
+*(file: `test_main_accuracy`)*  
 
-Forecast days within 1–16
+**Purpose:** Compare weather between two nearby cities  
+**Checks:**
+- Retrieves live temperature and wind data  
+- Passes if differences ≤ 5°C and ≤ 10 km/h
 
-Each field (time, temp, precip) has matching length
+---
 
-Missing daily key → raises error
+## 🌤️ 9. TestWeatherForecastConsistency *(Integration Test)*  
+*(file: `test_main_consistency`)*
 
-🖨️ 5. TestPrinting
+**Purpose:** Validate realism of a real 5-day forecast  
+**Checks:**
+- Correct number of days  
+- All lists have matching lengths  
+- Logical temperature values (min ≤ max)  
+- Realistic ranges for precipitation and wind
 
-Purpose: Check console output formatting.
-Checks:
+---
 
-print_current() and print_forecast() show correct formatted info
-(Captured via stdout)
+# 📜 Weather Dashboard License
 
-⌨️ 6. TestInteractiveHelpers
+**License Name:** Weather Dashboard License (MIT-style)  
+**Author:** Mathias Vertongen  
+**Year:** 2025  
 
-Purpose: Verify interactive user input validation.
-Checks:
+**Permissions:**
 
-Rejects invalid entries (letters, out-of-range)
+- Free use, modification, and redistribution  
+- Commercial use allowed  
+- Attribution required  
+- Must comply with Open-Meteo API terms
 
-Accepts valid numbers (0–16)
+---
 
-⚙️ 7. TestArgParse
-
-Purpose: Test CLI argument parsing.
-Checks:
-
---city, --forecast, and --timeout parsed correctly
-
-🌦️ 8. TestWeatherSimilarity (Integration Test), this test can be found in the file called test_main_accuracy
-
-Purpose: Compare weather data of two neighboring cities.
-Checks:
-
-Retrieves live temperature and windspeed
-
-Passes if differences ≤ 5 °C and ≤ 10 km/h respectively
-(Uses real API data)
-
-🌤️ 9. TestWeatherForecastConsistency (Integration Test), this test can be found in the file called test_main_consistency
-
-Purpose: Check that a real 5-day forecast is consistent and realistic.
-Checks:
-
-Correct number of forecast days returned
-
-All forecast lists have matching lengths
-
-Logical consistency (min ≤ max temperature)
-
-Physical plausibility (temps, wind, and precipitation within valid ranges)
-
-📜 10. Weather Dashboard License (Permissive License)
-
-License Name: Weather Dashboard License – Based on the MIT Model
-
-Author: Mathias Vertongen
-
-Project: Weather Dashboard (Open-Meteo API-based Python Application)
-
-Year: 2025
-
-
-This license provides maximum freedom with author recognition.
-
-Users are free to reuse, adapt, and distribute the Weather Dashboard, provided that proper credit is given to the original author and the Open-Meteo API terms are respected.
+<img width="865" height="872" alt="image" src="https://github.com/user-attachments/assets/64d6203f-0a26-4288-941d-585ba55f7272" />
