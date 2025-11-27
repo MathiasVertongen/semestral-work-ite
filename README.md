@@ -155,7 +155,7 @@ They validate both functional correctness and real-world API behavior.
 - Must comply with Open-Meteo API terms
 
 ---
-## **UMLdiagarm**
+## **UML diagram**
 
 <img width="865" height="872" alt="image" src="https://github.com/user-attachments/assets/d3d8825a-f227-49cb-b290-c9281a8eb069" />
 
